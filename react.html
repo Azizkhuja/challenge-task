@@ -1,129 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Recruitment task</title>
-    <meta name="robots" content="noindex">
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <meta name="robots" content="noindex" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <body>
-    <div id="app">
-    </div>
+    <div id="app"></div>
     <script type="text/babel">
-
-class TaskList extends React.Component {
-   constructor(){
-      super();
-      this.state = {
-        taskList: [
-          { 
-            "title": "Add form to add new worker",
-            "completed": false,
-            "subtaskList": [
-              { "title": "firstName", "completed": false },
-              { "title": "lastName", "completed": false },
-              { "title": "department", "completed": false },
-              { "title": "salary amount and currency", "completed": false }
-            ]
-          },
-          { 
-            "title": "Add search form", 
-            "completed": false,
-            "subtaskList": [
-              { "title": "person (text)", "completed": false },
-              { "title": "department (multiple choice)", "completed": false },
-              { "title": "salary (range)", "completed": false }
-            ]
-          },
-          { 
-            "title": "Add summary of salary per department", 
-            "completed": false
-          },
-          {
-            "title": "Other improvements (feel free to add other improvements)",
-            "completed": false
-          }
-        ]
-    }
-  }    
-  render() {
-    const { taskList } = this.state;
-    return (<ol>
-            {taskList.map((task, tIdx) => (
-              <li key={tIdx}>{task.title} { task.completed ? "✅" : "❌" }
+      // TASK related requrments start
+      class TaskList extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            taskList: [
+              {
+                title: "Add form to add new worker",
+                completed: false,
+                subtaskList: [
+                  { title: "firstName", completed: false },
+                  { title: "lastName", completed: false },
+                  { title: "department", completed: false },
+                  { title: "salary amount and currency", completed: false },
+                ],
+              },
+              {
+                title: "Add search form",
+                completed: false,
+                subtaskList: [
+                  { title: "person (text)", completed: false },
+                  { title: "department (multiple choice)", completed: false },
+                  { title: "salary (range)", completed: false },
+                ],
+              },
+              {
+                title: "Add summary of salary per department",
+                completed: false,
+              },
+              {
+                title:
+                  "Other improvements (feel free to add other improvements)",
+                completed: false,
+              },
+            ],
+          };
+        }
+        render() {
+          const { taskList } = this.state;
+          return (
+            <ol>
+              {taskList.map((task, tIdx) => (
+                <li key={tIdx}>
+                  {task.title} {task.completed ? "✅" : "❌"}
                   <ol type="a">
-                    {task.subtaskList && task.subtaskList.map((subtask, stIdx) => (<li key={stIdx}>{subtask.title} {subtask.completed ? "✅" : "❌"}</li>))}
-                  </ol> 
-              </li>
-            ))}
-          </ol>);
-  }
-}
-
-class WorkerList extends React.Component {
-  constructor(){
-      super();
-      this.state = {
-        "workerList": [
-          { "firstName": "John", "lastName": "Smith", "department": "IT", "salary": { "amount": 3000, "currency": "USD" } },
-          { "firstName": "Jane", "lastName": "Doe", "department": "IT", "salary": { "amount": 3000.50, "currency": "USD" } },
-          { "firstName": "Bob", "lastName": "Colman", "department": "Sales", "salary": { "amount": 9000, "currency": "USD" } },
-          { "firstName": "Barbara", "lastName": "O'Connor", "department": "Sales", "salary": { "amount": 4000, "currency": "USD" } },
-          { "firstName": "Adam", "lastName": "Murphy", "department": "Administration", "salary": { "amount": 2000, "currency": "USD" } }
-        ]
+                    {task.subtaskList &&
+                      task.subtaskList.map((subtask, stIdx) => (
+                        <li key={stIdx}>
+                          {subtask.title} {subtask.completed ? "✅" : "❌"}
+                        </li>
+                      ))}
+                  </ol>
+                </li>
+              ))}
+            </ol>
+          );
+        }
       }
-    }
-    render() {
-      const { workerList } = this.state;
-      const salarySum = workerList.reduce((acc, i) => acc + i.salary.amount, 0);
+      // End of TASK related requrments
+      class WorkerList extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            workerList: [
+              {
+                firstName: "John",
+                lastName: "Smith",
+                department: "IT",
+                salary: { amount: 3000, currency: "USD" },
+              },
+              {
+                firstName: "Jane",
+                lastName: "Doe",
+                department: "IT",
+                salary: { amount: 3000.5, currency: "USD" },
+              },
+              {
+                firstName: "Bob",
+                lastName: "Colman",
+                department: "Sales",
+                salary: { amount: 9000, currency: "USD" },
+              },
+              {
+                firstName: "Barbara",
+                lastName: "O'Connor",
+                department: "Sales",
+                salary: { amount: 4000, currency: "USD" },
+              },
+              {
+                firstName: "Adam",
+                lastName: "Murphy",
+                department: "Administration",
+                salary: { amount: 2000, currency: "USD" },
+              },
+            ],
+          };
+        }
+        render() {
+          const { workerList } = this.state;
+          const salarySum = workerList.reduce(
+            (acc, i) => acc + i.salary.amount,
+            0
+          );
 
-      return (<div>
-        <h2>Workers</h2>
-        <table border="1">
-        <tbody>
-        {workerList.map((worker, index) => (
-          <tr key={index}>
-            <td>{index+1}.</td>
-            <td>{worker.firstName}</td>
-            <td>{worker.lastName}</td>
-            <td>{worker.department}</td>
-            <td>{worker.salary.amount} {worker.salary.currency}</td>
-          </tr>
-        ))}
-        </tbody>
-        <tfoot>
-        <tr>
-          <td colSpan="3"></td>
-          <td>Summary</td>
-          <td>{salarySum} USD</td>
-        </tr>
-        </tfoot>
-        </table>
-      </div>);
-    }
-}
-ReactDOM.render(
-      <div style={{display: "flex", gap: "2em"}}>
-        <div>
-          <h1>TODO</h1>
-          <TaskList/>
-          <h2>Hints</h2>
-          <ol>
-            <li>
-            yarn global add browser-sync<br/>
-            browser-sync --watch .
-            </li>
-            <li>&lt;datalist&gt;</li>
-          </ol>
-        </div>
-        <div>
-          <WorkerList />
-        </div>
-      </div>,
-    document.getElementById('app')
-);
+          return (
+            <div>
+              <h2>Workers</h2>
+              <table border="1">
+                <tbody>
+                  {workerList.map((worker, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}.</td>
+                      <td>{worker.firstName}</td>
+                      <td>{worker.lastName}</td>
+                      <td>{worker.department}</td>
+                      <td>
+                        {worker.salary.amount} {worker.salary.currency}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="3"></td>
+                    <td>Summary</td>
+                    <td>{salarySum} USD</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(
+        <div style={{ display: "flex", gap: "2em" }}>
+          <div>
+            <h1>TODO</h1>
+            <TaskList />
+            <h2>Hints</h2>
+            <ol>
+              <li>
+                yarn global add browser-sync
+                <br />
+                browser-sync --watch .
+              </li>
+              <li>&lt;datalist&gt;</li>
+            </ol>
+          </div>
+          <div>
+            <WorkerList />
+          </div>
+        </div>,
+        document.getElementById("app")
+      );
     </script>
   </body>
 </html>
