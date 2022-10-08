@@ -76,80 +76,146 @@
         }
       }
       // End of TASK related requrments
-      class WorkerList extends React.Component {
-        constructor() {
-          super();
-          this.state = {
-            workerList: [
-              {
-                firstName: "John",
-                lastName: "Smith",
-                department: "IT",
-                salary: { amount: 3000, currency: "USD" },
-              },
-              {
-                firstName: "Jane",
-                lastName: "Doe",
-                department: "IT",
-                salary: { amount: 3000.5, currency: "USD" },
-              },
-              {
-                firstName: "Bob",
-                lastName: "Colman",
-                department: "Sales",
-                salary: { amount: 9000, currency: "USD" },
-              },
-              {
-                firstName: "Barbara",
-                lastName: "O'Connor",
-                department: "Sales",
-                salary: { amount: 4000, currency: "USD" },
-              },
-              {
-                firstName: "Adam",
-                lastName: "Murphy",
-                department: "Administration",
-                salary: { amount: 2000, currency: "USD" },
-              },
-            ],
-          };
-        }
-        render() {
-          const { workerList } = this.state;
-          const salarySum = workerList.reduce(
-            (acc, i) => acc + i.salary.amount,
-            0
-          );
-
-          return (
-            <div>
-              <h2>Workers</h2>
-              <table border="1">
-                <tbody>
-                  {workerList.map((worker, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}.</td>
-                      <td>{worker.firstName}</td>
-                      <td>{worker.lastName}</td>
-                      <td>{worker.department}</td>
-                      <td>
-                        {worker.salary.amount} {worker.salary.currency}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colSpan="3"></td>
-                    <td>Summary</td>
-                    <td>{salarySum} USD</td>
+      const WorkerList = () => {
+        const data = [
+          {
+            firstName: "John",
+            lastName: "Smith",
+            department: "IT",
+            salary: { amount: 3000, currency: "USD" },
+          },
+          {
+            firstName: "Jane",
+            lastName: "Doe",
+            department: "IT",
+            salary: { amount: 3000.5, currency: "USD" },
+          },
+          {
+            firstName: "Bob",
+            lastName: "Colman",
+            department: "Sales",
+            salary: { amount: 9000, currency: "USD" },
+          },
+          {
+            firstName: "Barbara",
+            lastName: "O'Connor",
+            department: "Sales",
+            salary: { amount: 4000, currency: "USD" },
+          },
+          {
+            firstName: "Adam",
+            lastName: "Murphy",
+            department: "Administration",
+            salary: { amount: 2000, currency: "USD" },
+          },
+        ];
+        const [workersList, setWorkersList] = React.useState(data);
+        const salarySum = workersList.reduce(
+          (acc, i) => acc + i.salary.amount,
+          0
+        );
+        return (
+          <div>
+            <h2>Workers</h2>
+            <table border="1">
+              <tbody>
+                {workersList.map((worker, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}.</td>
+                    <td>{worker.firstName}</td>
+                    <td>{worker.lastName}</td>
+                    <td>{worker.department}</td>
+                    <td>
+                      {worker.salary.amount} {worker.salary.currency}
+                    </td>
                   </tr>
-                </tfoot>
-              </table>
-            </div>
-          );
-        }
-      }
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="3"></td>
+                  <td>Summary</td>
+                  <td>{salarySum} USD</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        );
+      };
+      // class WorkerList extends React.Component {
+      //   constructor() {
+      //     super();
+      //     this.state = {
+      //       workerList: [
+      //         {
+      //           firstName: "John",
+      //           lastName: "Smith",
+      //           department: "IT",
+      //           salary: { amount: 3000, currency: "USD" },
+      //         },
+      //         {
+      //           firstName: "Jane",
+      //           lastName: "Doe",
+      //           department: "IT",
+      //           salary: { amount: 3000.5, currency: "USD" },
+      //         },
+      //         {
+      //           firstName: "Bob",
+      //           lastName: "Colman",
+      //           department: "Sales",
+      //           salary: { amount: 9000, currency: "USD" },
+      //         },
+      //         {
+      //           firstName: "Barbara",
+      //           lastName: "O'Connor",
+      //           department: "Sales",
+      //           salary: { amount: 4000, currency: "USD" },
+      //         },
+      //         {
+      //           firstName: "Adam",
+      //           lastName: "Murphy",
+      //           department: "Administration",
+      //           salary: { amount: 2000, currency: "USD" },
+      //         },
+      //       ],
+      //     };
+      //   }
+      //   render() {
+      //     const { workerList } = this.state;
+      //     const salarySum = workerList.reduce(
+      //       (acc, i) => acc + i.salary.amount,
+      //       0
+      //     );
+
+      //     return (
+      //       <div>
+      //         <h2>Workers</h2>
+      //         <table border="1">
+      //           <tbody>
+      //             {workerList.map((worker, index) => (
+      //               <tr key={index}>
+      //                 <td>{index + 1}.</td>
+      //                 <td>{worker.firstName}</td>
+      //                 <td>{worker.lastName}</td>
+      //                 <td>{worker.department}</td>
+      //                 <td>
+      //                   {worker.salary.amount} {worker.salary.currency}
+      //                 </td>
+      //               </tr>
+      //             ))}
+      //           </tbody>
+      //           <tfoot>
+      //             <tr>
+      //               <td colSpan="3"></td>
+      //               <td>Summary</td>
+      //               <td>{salarySum} USD</td>
+      //             </tr>
+      //           </tfoot>
+      //         </table>
+      //       </div>
+      //     );
+      //   }
+      // }
       ReactDOM.render(
         <div
           style={{
