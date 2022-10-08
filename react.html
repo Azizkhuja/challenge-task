@@ -113,6 +113,8 @@
         const [workerName, setWorkerName] = React.useState("");
         const [workerLastName, setWorkerLastName] = React.useState("");
         const [workerDepartment, setWorkerDepartment] = React.useState("");
+        const [workerSalary, setWorkerSalary] = React.useState("");
+        const [workerCurrency, setWorkerCurrency] = React.useState("");
 
         const addToList = (e) => {
           setWorkersList([
@@ -121,6 +123,10 @@
               firstName: workerName,
               lastName: workerLastName,
               department: workerDepartment,
+              salary: {
+                amount: workerSalary,
+                currency: workerCurrency,
+              },
             },
           ]);
           setWorkerName("");
@@ -152,7 +158,7 @@
             </table>
             <form>
               <div style={{ margin: 10 }}>
-                <label for="workerName">Worker Name</label>
+                <label htmlFor="workerName">Worker Name</label>
                 <input
                   style={{ width: "100%", padding: 5 }}
                   type="text"
@@ -165,9 +171,9 @@
                 />
               </div>
               <div style={{ margin: 10 }}>
-                <label for="workerLastName">Worker Last Name</label>
+                <label htmlFor="workerLastName">Worker Last Name</label>
                 <input
-                  style={{ marginTop: 10, width: "100%", padding: 5 }}
+                  style={{ width: "100%", padding: 5 }}
                   type="text"
                   placeholder="Add worker last name"
                   id="workerLastName"
@@ -178,7 +184,7 @@
                 />
               </div>
               <div style={{ margin: 10 }}>
-                <label for="workerDepartment" style={{ marginRight: 10 }}>
+                <label htmlFor="workerDepartment" style={{ marginRight: 10 }}>
                   Choose department
                 </label>
                 <select
@@ -188,10 +194,34 @@
                   }}
                   id="workerDepartment"
                 >
-                  <option value="it">IT</option>
-                  <option value="administration">Administration</option>
-                  <option value="sales">Sales</option>
+                  <option value="IT">IT</option>
+                  <option value="Administration">Administration</option>
+                  <option value="Sales">Sales</option>
                 </select>
+              </div>
+              <div style={{ margin: 10 }}>
+                <label htmlFor="workerSalary">Worker Salary</label>
+                <div style={{ display: "flex" }}>
+                  <input
+                    style={{ width: "80%", padding: 5 }}
+                    type="number"
+                    placeholder="Add worker salary"
+                    id="workerSalary"
+                    value={workerSalary}
+                    onChange={(e) => {
+                      setWorkerSalary(e.target.value);
+                    }}
+                  />
+                  <select
+                    value={workerCurrency}
+                    onChange={(e) => {
+                      setWorkerCurrency(e.target.value);
+                    }}
+                  >
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                  </select>
+                </div>
               </div>
             </form>
 
