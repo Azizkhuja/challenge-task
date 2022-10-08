@@ -88,7 +88,7 @@
             firstName: "Jane",
             lastName: "Doe",
             department: "IT",
-            salary: { amount: 3000.5, currency: "USD" },
+            salary: { amount: 3000, currency: "USD" },
           },
           {
             firstName: "Bob",
@@ -115,6 +115,17 @@
         const [workerDepartment, setWorkerDepartment] = React.useState("");
         const [workerSalary, setWorkerSalary] = React.useState("");
         const [workerCurrency, setWorkerCurrency] = React.useState("");
+        const [test, setTest] = React.useState("");
+
+        React.useEffect(() => {
+          setTest(
+            workersList.reduce(
+              (prevValue, currentValue) =>
+                Number(prevValue) + Number(currentValue.salary.amount),
+              0
+            )
+          );
+        }, [workersList]);
 
         const addToList = (e) => {
           e.preventDefault();
@@ -147,7 +158,7 @@
         };
 
         // const salarySum = workersList.reduce(
-        //   (acc, i) => acc + i.salary.amount,
+        //   (prevValue, currentValue) => prevValue + currentValue.salary.amount,
         //   0
         // );
 
@@ -168,6 +179,13 @@
                   </tr>
                 ))}
               </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan="3"></td>
+                  <td>Summary</td>
+                  <td>{test} USD</td>
+                </tr>
+              </tfoot>
             </table>
             <form onSubmit={addToList}>
               <div style={{ margin: 10 }}>
@@ -207,6 +225,7 @@
                   }}
                   id="workerDepartment"
                 >
+                  <option value="">Choose department</option>
                   <option value="IT">IT</option>
                   <option value="Administration">Administration</option>
                   <option value="Sales">Sales</option>
