@@ -117,20 +117,33 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
 
         const addToList = (e) => {
-          setWorkersList([
-            ...workersList,
-            {
-              firstName: workerName,
-              lastName: workerLastName,
-              department: workerDepartment,
-              salary: {
-                amount: workerSalary,
-                currency: workerCurrency,
+          e.preventDefault();
+          if (
+            workerName !== "" &&
+            workerLastName !== "" &&
+            workerDepartment !== "" &&
+            workerSalary !== "" &&
+            workerCurrency !== ""
+          ) {
+            setWorkersList([
+              ...workersList,
+              {
+                firstName: workerName,
+                lastName: workerLastName,
+                department: workerDepartment,
+                salary: {
+                  amount: workerSalary,
+                  currency: workerCurrency,
+                },
               },
-            },
-          ]);
-          setWorkerName("");
-          setWorkerLastName("");
+            ]);
+            setWorkerName("");
+            setWorkerLastName("");
+            setWorkerSalary("");
+            setWorkerCurrency("");
+          } else {
+            alert("Alert");
+          }
         };
 
         // const salarySum = workersList.reduce(
@@ -156,7 +169,7 @@
                 ))}
               </tbody>
             </table>
-            <form>
+            <form onSubmit={addToList}>
               <div style={{ margin: 10 }}>
                 <label htmlFor="workerName">Worker Name</label>
                 <input
@@ -223,9 +236,17 @@
                   </select>
                 </div>
               </div>
+              <input
+                style={{ margin: 10 }}
+                type="submit"
+                value="Submit worker information"
+              />
             </form>
-
-            <button onClick={addToList}>Add</button>
+            <label htmlFor="browser">Choose your browser from the list:</label>
+            <input list="browsers" name="browser" id="browser" />
+            <datalist id="browsers">
+              <option value="Edge" />
+            </datalist>
           </div>
         );
       };
