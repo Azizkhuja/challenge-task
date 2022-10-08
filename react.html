@@ -115,10 +115,10 @@
         const [workerDepartment, setWorkerDepartment] = React.useState("");
         const [workerSalary, setWorkerSalary] = React.useState("");
         const [workerCurrency, setWorkerCurrency] = React.useState("");
-        const [test, setTest] = React.useState("");
+        const [salarySum, setSalarySum] = React.useState("");
 
         React.useEffect(() => {
-          setTest(
+          setSalarySum(
             workersList.reduce(
               (prevValue, currentValue) =>
                 Number(prevValue) + Number(currentValue.salary.amount),
@@ -183,7 +183,7 @@
                 <tr>
                   <td colSpan="3"></td>
                   <td>Summary</td>
-                  <td>{test} USD</td>
+                  <td>{salarySum} USD</td>
                 </tr>
               </tfoot>
             </table>
@@ -262,11 +262,15 @@
                 value="Submit worker information"
               />
             </form>
-            <label htmlFor="browser">Choose your browser from the list:</label>
-            <input list="browsers" name="browser" id="browser" />
-            <datalist id="browsers">
-              <option value="Edge" />
-            </datalist>
+
+            <label htmlFor="browser" style={{ marginRight: 5 }}>
+              Choose your browser from the list:
+            </label>
+            <select id="departments">
+              <option value="IT">IT</option>
+              <option value="Administration">Administration</option>
+              <option value="Sales">Sales</option>
+            </select>
           </div>
         );
       };
