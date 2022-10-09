@@ -150,17 +150,13 @@
             ]);
             setWorkerName("");
             setWorkerLastName("");
+            setWorkerDepartment("");
             setWorkerSalary("");
             setWorkerCurrency("");
           } else {
             alert("Alert");
           }
         };
-
-        // const salarySum = workersList.reduce(
-        //   (prevValue, currentValue) => prevValue + currentValue.salary.amount,
-        //   0
-        // );
 
         return (
           <div>
@@ -224,6 +220,7 @@
                     setWorkerDepartment(e.target.value);
                   }}
                   id="workerDepartment"
+                  style={{ padding: 5 }}
                 >
                   <option value="">Choose department</option>
                   <option value="IT">IT</option>
@@ -252,7 +249,7 @@
                   >
                     <option value="">Choose currency</option>
                     <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
+                    <option value="PLN">PLN</option>
                   </select>
                 </div>
               </div>
@@ -262,15 +259,15 @@
                 value="Submit worker information"
               />
             </form>
-
-            <label htmlFor="browser" style={{ marginRight: 5 }}>
-              Choose your browser from the list:
-            </label>
-            <select id="departments">
-              <option value="IT">IT</option>
-              <option value="Administration">Administration</option>
-              <option value="Sales">Sales</option>
-            </select>
+            <div style={{ margin: 10 }}>
+              <label style={{ marginRight: 5 }}>Filter by department:</label>
+              <select style={{ padding: 5 }}>
+                <option value="">Select department</option>
+                <option value="IT">IT</option>
+                <option value="Administration">Administration</option>
+                <option value="Sales">Sales</option>
+              </select>
+            </div>
           </div>
         );
       };
