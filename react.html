@@ -117,38 +117,7 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
         const [query, setQuery] = React.useState("");
-        // const [filteredArray, setFilteredArray] = React.useState(
-        //   workersList || null
-        // ); // use this to print the list
-        // let filteredProduct = workersList.filter((pruduct) => {
-        //   if (query === "IT") {
-        //     return pruduct.department["IT"];
-        //   } else if (query === "Sales") {
-        //     return pruduct.department["Sales"];
-        //   } else if (query === "Administration") {
-        //     return pruduct.department["Administration"];
-        //   } else {
-        //     return pruduct.department;
-        //   }
-        // });
-        // const onFilterValueChanged = (e) => {
-        //   setQuery(e.target.value);
-        // };
-        // const handleArrayChanges = (event, value) => {
-        //   if (value && value.length > 0) {
-        //     const data = workersList
-        //       .filter((data) => value.includes(data.department))
-        //       .map((filteredName) => {
-        //         return filteredName;
-        //       });
-        //     setFilteredArray(data);
-        //   } else {
-        //     const data2 = workersList;
 
-        //     setFilteredArray(data2);
-        //   }
-        //   console.log(value);
-        // };
         React.useEffect(() => {
           setSalarySum(
             workersList.reduce(
@@ -192,9 +161,6 @@
           }
         };
 
-        // const searchData = (e) => {
-        //   return workersList.filter((item) => console.log(item.department));
-        // };
         return (
           <div>
             <h2>Workers</h2>
