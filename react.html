@@ -269,13 +269,14 @@
               />
             </form>
             <div style={{ margin: 10 }}>
+              <label htmlFor="searchByName">Search by name or lastname</label>
               <input
                 style={{ width: "100%", padding: 5 }}
                 type="text"
                 placeholder="Search..."
+                id="searchByName"
                 onChange={(e) => setQuery(e.target.value)}
               />
-              {query}
             </div>
           </div>
         );
