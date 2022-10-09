@@ -117,6 +117,8 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
         const [query, setQuery] = React.useState("");
+        const [test, setTest] = React.useState("All");
+        const [checked, setChecked] = React.useState(false);
 
         React.useEffect(() => {
           setSalarySum(
@@ -160,11 +162,25 @@
             alert("Alert");
           }
         };
-
+        const filterResult = (carItem) => {
+          const results = workersList.filter((curData) => {
+            return curData.department === carItem;
+          });
+          setWorkersList(results);
+        };
+        // let filterList = workersList.filter((item) => {
+        //   let results = [];
+        //   if (test === "Sales") {
+        //     return Object.values(log);
+        //   }
+        // });
+        // const handleOnCheckBoxIt = (e) => {
+        //   setTest(e.target.value);
+        // };
         return (
           <div>
             <h2>Workers</h2>
-            <table border="1">
+            <table border="1" style={{ width: "100%" }}>
               <tbody>
                 {workersList
                   .filter(
@@ -220,24 +236,6 @@
                 />
               </div>
               <div style={{ margin: 10 }}>
-                <label htmlFor="workerDepartment" style={{ marginRight: 10 }}>
-                  Choose department
-                </label>
-                <select
-                  value={workerDepartment}
-                  onChange={(e) => {
-                    setWorkerDepartment(e.target.value);
-                  }}
-                  id="workerDepartment"
-                  style={{ padding: 5 }}
-                >
-                  <option value="">Choose department</option>
-                  <option value="IT">IT</option>
-                  <option value="Administration">Administration</option>
-                  <option value="Sales">Sales</option>
-                </select>
-              </div>
-              <div style={{ margin: 10 }}>
                 <label htmlFor="workerSalary">Worker Salary</label>
                 <div style={{ display: "flex" }}>
                   <input
@@ -262,6 +260,24 @@
                   </select>
                 </div>
               </div>
+              <div style={{ margin: 10 }}>
+                <label htmlFor="workerDepartment" style={{ marginRight: 10 }}>
+                  Choose department
+                </label>
+                <select
+                  value={workerDepartment}
+                  onChange={(e) => {
+                    setWorkerDepartment(e.target.value);
+                  }}
+                  id="workerDepartment"
+                  style={{ padding: 5 }}
+                >
+                  <option value="">Choose department</option>
+                  <option value="IT">IT</option>
+                  <option value="Administration">Administration</option>
+                  <option value="Sales">Sales</option>
+                </select>
+              </div>
               <input
                 style={{ margin: 10 }}
                 type="submit"
@@ -277,6 +293,9 @@
                 id="searchByName"
                 onChange={(e) => setQuery(e.target.value)}
               />
+            </div>
+            <div>
+              <button onClick={() => filterResult("Sales")}>ADD</button>
             </div>
           </div>
         );
