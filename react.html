@@ -117,7 +117,38 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
         const [query, setQuery] = React.useState("");
+        // const [filteredArray, setFilteredArray] = React.useState(
+        //   workersList || null
+        // ); // use this to print the list
+        // let filteredProduct = workersList.filter((pruduct) => {
+        //   if (query === "IT") {
+        //     return pruduct.department["IT"];
+        //   } else if (query === "Sales") {
+        //     return pruduct.department["Sales"];
+        //   } else if (query === "Administration") {
+        //     return pruduct.department["Administration"];
+        //   } else {
+        //     return pruduct.department;
+        //   }
+        // });
+        // const onFilterValueChanged = (e) => {
+        //   setQuery(e.target.value);
+        // };
+        // const handleArrayChanges = (event, value) => {
+        //   if (value && value.length > 0) {
+        //     const data = workersList
+        //       .filter((data) => value.includes(data.department))
+        //       .map((filteredName) => {
+        //         return filteredName;
+        //       });
+        //     setFilteredArray(data);
+        //   } else {
+        //     const data2 = workersList;
 
+        //     setFilteredArray(data2);
+        //   }
+        //   console.log(value);
+        // };
         React.useEffect(() => {
           setSalarySum(
             workersList.reduce(
@@ -127,6 +158,8 @@
             )
           );
         }, [workersList]);
+
+        const handleChange = (e) => {};
 
         const addToList = (e) => {
           e.preventDefault();
@@ -159,25 +192,31 @@
           }
         };
 
-        const searchData = (e) => {
-          return workersList.filter((item) => console.log(item.department));
-        };
+        // const searchData = (e) => {
+        //   return workersList.filter((item) => console.log(item.department));
+        // };
         return (
           <div>
             <h2>Workers</h2>
             <table border="1">
               <tbody>
-                {workersList.map((worker, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}.</td>
-                    <td>{worker.firstName}</td>
-                    <td>{worker.lastName}</td>
-                    <td>{worker.department}</td>
-                    <td>
-                      {worker.salary.amount} {worker.salary.currency}
-                    </td>
-                  </tr>
-                ))}
+                {workersList
+                  .filter(
+                    (user) =>
+                      user.firstName.toLowerCase().includes(query) ||
+                      user.lastName.toLowerCase().includes(query)
+                  )
+                  .map((worker, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}.</td>
+                      <td>{worker.firstName}</td>
+                      <td>{worker.lastName}</td>
+                      <td>{worker.department}</td>
+                      <td>
+                        {worker.salary.amount} {worker.salary.currency}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
               <tfoot>
                 <tr>
@@ -263,8 +302,15 @@
                 value="Submit worker information"
               />
             </form>
-
-            <input type="checkbox" onClick={searchData} />
+            <div style={{ margin: 10 }}>
+              <input
+                style={{ width: "100%", padding: 5 }}
+                type="text"
+                placeholder="Search..."
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              {query}
+            </div>
           </div>
         );
       };
