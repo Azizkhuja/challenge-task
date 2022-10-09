@@ -77,7 +77,7 @@
       }
       // End of TASK related requrments
       const WorkerList = () => {
-        const data = [
+        const initState = [
           {
             firstName: "John",
             lastName: "Smith",
@@ -109,13 +109,14 @@
             salary: { amount: 2000, currency: "USD" },
           },
         ];
-        const [workersList, setWorkersList] = React.useState(data);
+        const [workersList, setWorkersList] = React.useState(initState);
         const [workerName, setWorkerName] = React.useState("");
         const [workerLastName, setWorkerLastName] = React.useState("");
         const [workerDepartment, setWorkerDepartment] = React.useState("");
         const [workerSalary, setWorkerSalary] = React.useState("");
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
+        const [query, setQuery] = React.useState("");
 
         React.useEffect(() => {
           setSalarySum(
@@ -158,6 +159,9 @@
           }
         };
 
+        const searchData = (e) => {
+          return workersList.filter((item) => console.log(item.department));
+        };
         return (
           <div>
             <h2>Workers</h2>
@@ -259,15 +263,8 @@
                 value="Submit worker information"
               />
             </form>
-            <div style={{ margin: 10 }}>
-              <label style={{ marginRight: 5 }}>Filter by department:</label>
-              <select style={{ padding: 5 }}>
-                <option value="">Select department</option>
-                <option value="IT">IT</option>
-                <option value="Administration">Administration</option>
-                <option value="Sales">Sales</option>
-              </select>
-            </div>
+
+            <input type="checkbox" onClick={searchData} />
           </div>
         );
       };
