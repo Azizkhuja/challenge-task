@@ -15,6 +15,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <style>
+    .button-wrapper {
+      margin-bottom: 10px;
+    }
     .sortBtn {
       padding: 10px;
       margin-right: 4px;
@@ -184,7 +187,7 @@
         return (
           <div>
             <h2>Workers</h2>
-            <div style={{ marginBottom: 10 }}>
+            <div className="button-wrapper">
               <button className="sortBtn" onClick={() => filterResult("IT")}>
                 IT
               </button>
