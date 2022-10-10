@@ -28,7 +28,11 @@
       align-items: center;
       margin: 10px 0 10px 0;
     }
-    .button-wrapper {
+    .input-style {
+      width: 100%;
+      padding: 5px;
+    }
+    .mx-10 {
       margin-bottom: 10px;
     }
     .sortBtn {
@@ -201,22 +205,27 @@
         return (
           <div>
             <h2>Workers</h2>
-            <div className="button-wrapper">
-              <span>Sort by department: &nbsp;</span>
-              <button className="sortBtn" onClick={() => filterResult("IT")}>
-                IT
-              </button>
-              <button className="sortBtn" onClick={() => filterResult("Sales")}>
-                Sales
-              </button>
-              <button
-                className="sortBtn"
-                onClick={() => filterResult("Administration")}
-              >
-                Administration
-              </button>
+            <div className="mx-10 center">
+              <span>Search department: &nbsp;</span>
+              <div>
+                <button className="sortBtn" onClick={() => filterResult("IT")}>
+                  IT
+                </button>
+                <button
+                  className="sortBtn"
+                  onClick={() => filterResult("Sales")}
+                >
+                  Sales
+                </button>
+                <button
+                  className="sortBtn"
+                  onClick={() => filterResult("Administration")}
+                >
+                  Administration
+                </button>
+              </div>
               <div className="center">
-                <label htmlFor="searchByName">Search by name:</label>
+                <label htmlFor="searchByName">Search:</label>
                 <input
                   style={{ width: "60%", padding: 5 }}
                   type="text"
@@ -226,7 +235,7 @@
                 />
               </div>
             </div>
-            <table border="1" style={{ width: "100%" }}>
+            <table border="1" className="mx-10" style={{ width: "100%" }}>
               <tbody>
                 {workersList
                   .filter(
@@ -255,10 +264,10 @@
               </tfoot>
             </table>
             <form onSubmit={addToList}>
-              <div style={{ margin: 10 }}>
+              <div>
                 <label htmlFor="workerName">Worker Name</label>
                 <input
-                  style={{ width: "100%", padding: 5 }}
+                  className="mx-10 input-style"
                   type="text"
                   placeholder="Add worker"
                   id="workerName"
@@ -268,10 +277,10 @@
                   }}
                 />
               </div>
-              <div style={{ margin: 10 }}>
+              <div>
                 <label htmlFor="workerLastName">Worker Last Name</label>
                 <input
-                  style={{ width: "100%", padding: 5 }}
+                  className="mx-10 input-style"
                   type="text"
                   placeholder="Add worker last name"
                   id="workerLastName"
@@ -281,11 +290,13 @@
                   }}
                 />
               </div>
-              <div style={{ margin: 10 }}>
-                <label htmlFor="workerSalary">Worker Salary</label>
-                <div style={{ display: "flex" }}>
+              <label htmlFor="workerSalary">Worker Salary</label>
+              <div className="mx-10 center">
+                <div
+                  style={{ display: "flex", justifyContent: "space-around" }}
+                >
                   <input
-                    style={{ width: "80%", padding: 5 }}
+                    className="input-style"
                     type="number"
                     placeholder="Add worker salary"
                     id="workerSalary"
@@ -304,28 +315,26 @@
                     <option value="USD">USD</option>
                     <option value="PLN">PLN</option>
                   </select>
+                  <select
+                    value={workerDepartment}
+                    onChange={(e) => {
+                      setWorkerDepartment(e.target.value);
+                    }}
+                    id="workerDepartment"
+                    style={{ padding: 5 }}
+                  >
+                    <option value="">Choose department</option>
+                    <option value="IT">IT</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Sales">Sales</option>
+                  </select>
                 </div>
               </div>
-              <div style={{ margin: 10 }}>
-                <label htmlFor="workerDepartment" style={{ marginRight: 10 }}>
-                  Choose department
-                </label>
-                <select
-                  value={workerDepartment}
-                  onChange={(e) => {
-                    setWorkerDepartment(e.target.value);
-                  }}
-                  id="workerDepartment"
-                  style={{ padding: 5 }}
-                >
-                  <option value="">Choose department</option>
-                  <option value="IT">IT</option>
-                  <option value="Administration">Administration</option>
-                  <option value="Sales">Sales</option>
-                </select>
+              <div className="center">
+                <label htmlFor="workerDepartment">Choose department</label>
               </div>
               <input
-                style={{ margin: 10 }}
+                style={{ margin: 10, width: "100%" }}
                 type="submit"
                 value="Submit worker information"
               />
