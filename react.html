@@ -22,6 +22,12 @@
     body {
       font-family: "Montserrat", sans-serif;
     }
+    .center {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0 10px 0;
+    }
     .button-wrapper {
       margin-bottom: 10px;
     }
@@ -209,6 +215,16 @@
               >
                 Administration
               </button>
+              <div className="center">
+                <label htmlFor="searchByName">Search by name:</label>
+                <input
+                  style={{ width: "60%", padding: 5 }}
+                  type="text"
+                  placeholder="Search..."
+                  id="searchByName"
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </div>
             </div>
             <table border="1" style={{ width: "100%" }}>
               <tbody>
@@ -314,16 +330,6 @@
                 value="Submit worker information"
               />
             </form>
-            <div style={{ margin: 10 }}>
-              <label htmlFor="searchByName">Search by name or lastname</label>
-              <input
-                style={{ width: "100%", padding: 5 }}
-                type="text"
-                placeholder="Search..."
-                id="searchByName"
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
           </div>
         );
       };
