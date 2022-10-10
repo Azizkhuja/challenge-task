@@ -29,14 +29,27 @@
       margin: 10px 0 10px 0;
     }
     .input-style {
-      width: 100%;
+      width: 98%;
       padding: 5px;
     }
     .mx-10 {
       margin-bottom: 10px;
     }
+    .submit-button {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      font-family: "Montserrat", sans-serif;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+      margin-top: 10px;
+    }
+    .submit-button:hover {
+      background-color: #d4d4d4;
+    }
     .sortBtn {
-      padding: 10px;
+      padding: 7px;
       margin-right: 4px;
       font-family: "Montserrat", sans-serif;
       border: none;
@@ -292,9 +305,7 @@
               </div>
               <label htmlFor="workerSalary">Worker Salary</label>
               <div className="mx-10 center">
-                <div
-                  style={{ display: "flex", justifyContent: "space-around" }}
-                >
+                <div style={{ display: "flex" }}>
                   <input
                     className="input-style"
                     type="number"
@@ -330,11 +341,8 @@
                   </select>
                 </div>
               </div>
-              <div className="center">
-                <label htmlFor="workerDepartment">Choose department</label>
-              </div>
               <input
-                style={{ margin: 10, width: "100%" }}
+                className="submit-button"
                 type="submit"
                 value="Submit worker information"
               />
