@@ -14,6 +14,19 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
+  <style>
+    .sortBtn {
+      padding: 10px;
+      margin-right: 4px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.5s ease-in-out;
+    }
+    .sortBtn:hover {
+      background-color: #d4d4d4;
+    }
+  </style>
   <body>
     <div id="app"></div>
     <script type="text/babel">
@@ -171,10 +184,17 @@
         return (
           <div>
             <h2>Workers</h2>
-            <div>
-              <button onClick={() => filterResult("IT")}>IT</button>
-              <button onClick={() => filterResult("Sales")}>Sales</button>
-              <button onClick={() => filterResult("Administration")}>
+            <div style={{ marginBottom: 10 }}>
+              <button className="sortBtn" onClick={() => filterResult("IT")}>
+                IT
+              </button>
+              <button className="sortBtn" onClick={() => filterResult("Sales")}>
+                Sales
+              </button>
+              <button
+                className="sortBtn"
+                onClick={() => filterResult("Administration")}
+              >
                 Administration
               </button>
             </div>
