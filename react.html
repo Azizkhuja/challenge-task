@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <title>Recruitment task</title>
     <meta name="robots" content="noindex" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://unpkg.com/react@17/umd/react.development.js"
       crossorigin
@@ -15,12 +19,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
   </head>
   <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
     .button-wrapper {
       margin-bottom: 10px;
     }
     .sortBtn {
       padding: 10px;
       margin-right: 4px;
+      font-family: "Montserrat", sans-serif;
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -188,6 +196,7 @@
           <div>
             <h2>Workers</h2>
             <div className="button-wrapper">
+              <span>Sort by department: &nbsp;</span>
               <button className="sortBtn" onClick={() => filterResult("IT")}>
                 IT
               </button>
