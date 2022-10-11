@@ -37,7 +37,7 @@
     }
     .submit-button {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       border: none;
       font-family: "Montserrat", sans-serif;
       border-radius: 6px;
@@ -217,7 +217,7 @@
         };
         return (
           <div>
-            <h2>Workers</h2>
+            <h2>Workers list</h2>
             <div className="mx-10 center">
               <span>Search department: &nbsp;</span>
               <div>
@@ -276,6 +276,7 @@
                 </tr>
               </tfoot>
             </table>
+            <h2>Add worker to the list</h2>
             <form onSubmit={addToList}>
               <div>
                 <label htmlFor="workerName">Worker Name</label>
