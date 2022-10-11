@@ -21,7 +21,7 @@
   <style>
     body {
       font-family: "Montserrat", sans-serif;
-      background-color: rgb(215, 215, 215);
+      background-color: #e5e5e5;
     }
     .center {
       display: flex;
@@ -45,9 +45,10 @@
       cursor: pointer;
       transition: all 0.5s ease-in-out;
       background-color: #fff;
-      margin-top: 10px;
+      margin-top: 20px;
     }
-    .submit-button:hover {
+    .submit-button:hover,
+    .sortBtn:hover {
       background-color: #ebebeb;
     }
     .sortBtn {
@@ -59,9 +60,6 @@
       cursor: pointer;
       transition: all 0.5s ease-in-out;
       background-color: #fff;
-    }
-    .sortBtn:hover {
-      background-color: #ebebeb;
     }
   </style>
   <body>
@@ -283,7 +281,7 @@
             <h2>Add worker to the list</h2>
             <form onSubmit={addToList}>
               <div>
-                <label htmlFor="workerName">Worker Name</label>
+                <label htmlFor="workerName">Worker first name</label>
                 <input
                   className="mx-10 input-style"
                   type="text"
@@ -296,7 +294,7 @@
                 />
               </div>
               <div>
-                <label htmlFor="workerLastName">Worker Last Name</label>
+                <label htmlFor="workerLastName">Worker last name</label>
                 <input
                   className="mx-10 input-style"
                   type="text"
@@ -308,8 +306,8 @@
                   }}
                 />
               </div>
-              <label htmlFor="workerSalary">Worker Salary</label>
-              <div className="mx-10 center">
+              <label htmlFor="workerSalary">Worker salary & Department</label>
+              <div>
                 <div style={{ display: "flex" }}>
                   <input
                     className="input-style"
@@ -329,7 +327,6 @@
                   >
                     <option value="">Choose currency</option>
                     <option value="USD">USD</option>
-                    <option value="PLN">PLN</option>
                   </select>
                   <select
                     value={workerDepartment}
