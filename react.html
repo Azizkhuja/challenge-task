@@ -165,7 +165,7 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
         const [query, setQuery] = React.useState("");
-        const [test, setTest] = React.useState("All");
+        const [test, setTest] = React.useState();
         const [checked, setChecked] = React.useState(false);
 
         React.useEffect(() => {
@@ -177,8 +177,6 @@
             )
           );
         }, [workersList]);
-
-        const handleChange = (e) => {};
 
         const addToList = (e) => {
           e.preventDefault();
@@ -211,12 +209,79 @@
             alert("Please fill the fields");
           }
         };
+
+        // Filter by department
         const filterResult = (carItem) => {
           const results = workersList.filter((curData) => {
             return curData.department === carItem;
           });
           setWorkersList(results);
         };
+        // Each department calculation
+        const departmentsArr = [];
+
+        workersList.forEach((uniqueDepartment) => {
+          const departmentSum = {
+            sum: 0,
+          };
+          if (uniqueDepartment.department === "Sales") {
+            departmentsArr.push(Number(uniqueDepartment.salary.amount));
+          }
+        });
+        const oops = departmentsArr.reduce((acc, i) => acc + i, 0);
+
+        // workersList.forEach((uniqueDepartment) => {
+        //   const departmentSum = {
+        //     sum: 0,
+        //   };
+        //   if (uniqueDepartment.department === "Sales") {
+        //     departmentSum.sum += Number(uniqueDepartment.salary.amount);
+        //   }
+        //   departmentsArr.push(departmentSum);
+
+        // const salarySum = workerList.reduce(
+        //       (acc, i) => acc + i.salary.amount,
+        //       0
+        //     );
+        // const departmentSum = {
+        //   department: uniqueDepartment,
+        //   sum: 0,
+        //   currency: undefined,
+        // };
+        // workersList.forEach((worker) => {
+        // console.log(worker);
+        // if (worker.department === uniqueDepartment) {
+        //   departmentSum.sum += Number(worker.salary.amount);
+        // }
+        // });
+        // departmentsArr.push(departmentSum);
+        // console.log(departmentsArr);
+        // });
+
+        // departmentsArr(departmentSum);
+
+        // const departmentsArr = [];
+        // workersList.forEach((uniqueDepartment) => {
+        //   const departmentSum = {
+        //     department: uniqueDepartment,
+        //     sum: 0,
+        //     currency: undefined,
+        //   };
+
+        //   initState.forEach((worker) => {
+        //     if (worker.department === uniqueDepartment) {
+        //       departmentSum.sum += Number(worker.salary.amount);
+        //       departmentSum.currency +=
+        //         departmentSum.currency &&
+        //         departmentSum.currency !== worker.salary.currency
+        //           ? ""
+        //           : worker.salary.currency;
+        //     }
+        //   });
+        //   departmentsArr.push(departmentSum);
+        // });
+        // setTest(departmentsArr);
+
         return (
           <div>
             <h2>Workers list</h2>
@@ -349,6 +414,8 @@
                 value="Submit worker information"
               />
             </form>
+            <h1>ww</h1>
+            {oops}
           </div>
         );
       };
