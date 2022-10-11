@@ -165,7 +165,6 @@
         const [workerCurrency, setWorkerCurrency] = React.useState("");
         const [salarySum, setSalarySum] = React.useState("");
         const [query, setQuery] = React.useState("");
-        const [test, setTest] = React.useState();
         const [checked, setChecked] = React.useState(false);
 
         React.useEffect(() => {
@@ -218,17 +217,21 @@
           setWorkersList(results);
         };
         // Each department calculation
-        const departmentsArr = [];
+        const salesDepartmentArr = [];
+        const itDepartmentArr = [];
 
         workersList.forEach((uniqueDepartment) => {
           const departmentSum = {
             sum: 0,
           };
           if (uniqueDepartment.department === "Sales") {
-            departmentsArr.push(Number(uniqueDepartment.salary.amount));
+            salesDepartmentArr.push(Number(uniqueDepartment.salary.amount));
+          } else if (uniqueDepartment.department === "IT") {
+            itDepartmentArr.push(Number(uniqueDepartment.salary.amount));
           }
         });
-        const oops = departmentsArr.reduce((acc, i) => acc + i, 0);
+        const oops = salesDepartmentArr.reduce((acc, i) => acc + i, 0);
+        const itOops = itDepartmentArr.reduce((acc, i) => acc + i, 0);
 
         // workersList.forEach((uniqueDepartment) => {
         //   const departmentSum = {
@@ -414,8 +417,11 @@
                 value="Submit worker information"
               />
             </form>
-            <h1>ww</h1>
-            {oops}
+            <h2>Salary per department</h2>
+            <ul>
+              <li>Sales department {oops}</li>
+              <li>IT department {itOops}</li>
+            </ul>
           </div>
         );
       };
