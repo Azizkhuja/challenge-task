@@ -5,7 +5,7 @@
     <title>Recruitment task</title>
     <meta name="robots" content="noindex" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <script
@@ -35,6 +35,9 @@
     }
     .mx-10 {
       margin-bottom: 10px;
+    }
+    .totalValue {
+      font-weight: 800;
     }
     .submit-button {
       width: 100%;
@@ -427,11 +430,19 @@
               />
             </form>
             <h2>Salary per department</h2>
-            <ul>
-              <li>Total salary for the department of IT {itOops}</li>
-              <li>Total salary for the department of Sales {oops}</li>
-              <li>Total salary for the department of Administration {adOps}</li>
-            </ul>
+            <div>
+              <p>
+                Total salary of IT: <span className="totalValue">{itOops}</span>
+              </p>
+              <p>
+                Total salary of Sales:{" "}
+                <span className="totalValue">{oops}</span>
+              </p>
+              <p>
+                Total salary of Administration:{" "}
+                <span className="totalValue">{adOps}</span>
+              </p>
+            </div>
           </div>
         );
       };
