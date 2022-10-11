@@ -217,21 +217,30 @@
           setWorkersList(results);
         };
         // Each department calculation
-        const salesDepartmentArr = [];
         const itDepartmentArr = [];
+        const salesDepartmentArr = [];
+        const administrationDepartmentArr = [];
 
         workersList.forEach((uniqueDepartment) => {
           const departmentSum = {
             sum: 0,
           };
-          if (uniqueDepartment.department === "Sales") {
-            salesDepartmentArr.push(Number(uniqueDepartment.salary.amount));
-          } else if (uniqueDepartment.department === "IT") {
+          if (uniqueDepartment.department === "IT") {
             itDepartmentArr.push(Number(uniqueDepartment.salary.amount));
+          } else if (uniqueDepartment.department === "Sales") {
+            salesDepartmentArr.push(Number(uniqueDepartment.salary.amount));
+          } else if (uniqueDepartment.department === "Administration") {
+            administrationDepartmentArr.push(
+              Number(uniqueDepartment.salary.amount)
+            );
           }
         });
-        const oops = salesDepartmentArr.reduce((acc, i) => acc + i, 0);
         const itOops = itDepartmentArr.reduce((acc, i) => acc + i, 0);
+        const oops = salesDepartmentArr.reduce((acc, i) => acc + i, 0);
+        const adOps = administrationDepartmentArr.reduce(
+          (acc, i) => acc + i,
+          0
+        );
 
         // workersList.forEach((uniqueDepartment) => {
         //   const departmentSum = {
@@ -419,8 +428,9 @@
             </form>
             <h2>Salary per department</h2>
             <ul>
-              <li>Sales department {oops}</li>
-              <li>IT department {itOops}</li>
+              <li>Total salary for the department of IT {itOops}</li>
+              <li>Total salary for the department of Sales {oops}</li>
+              <li>Total salary for the department of Administration {adOps}</li>
             </ul>
           </div>
         );
