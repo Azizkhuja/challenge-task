@@ -185,57 +185,6 @@
           (acc, i) => acc + i,
           0
         );
-        // workersList.forEach((uniqueDepartment) => {
-        //   const departmentSum = {
-        //     sum: 0,
-        //   };
-        //   if (uniqueDepartment.department === "Sales") {
-        //     departmentSum.sum += Number(uniqueDepartment.salary.amount);
-        //   }
-        //   departmentsArr.push(departmentSum);
-
-        // const salarySum = workerList.reduce(
-        //       (acc, i) => acc + i.salary.amount,
-        //       0
-        //     );
-        // const departmentSum = {
-        //   department: uniqueDepartment,
-        //   sum: 0,
-        //   currency: undefined,
-        // };
-        // workersList.forEach((worker) => {
-        // console.log(worker);
-        // if (worker.department === uniqueDepartment) {
-        //   departmentSum.sum += Number(worker.salary.amount);
-        // }
-        // });
-        // departmentsArr.push(departmentSum);
-        // console.log(departmentsArr);
-        // });
-
-        // departmentsArr(departmentSum);
-
-        // const departmentsArr = [];
-        // workersList.forEach((uniqueDepartment) => {
-        //   const departmentSum = {
-        //     department: uniqueDepartment,
-        //     sum: 0,
-        //     currency: undefined,
-        //   };
-
-        //   initState.forEach((worker) => {
-        //     if (worker.department === uniqueDepartment) {
-        //       departmentSum.sum += Number(worker.salary.amount);
-        //       departmentSum.currency +=
-        //         departmentSum.currency &&
-        //         departmentSum.currency !== worker.salary.currency
-        //           ? ""
-        //           : worker.salary.currency;
-        //     }
-        //   });
-        //   departmentsArr.push(departmentSum);
-        // });
-        // setTest(departmentsArr);
 
         return (
           <div>
@@ -387,80 +336,6 @@
           </div>
         );
       };
-      // class WorkerList extends React.Component {
-      //   constructor() {
-      //     super();
-      //     this.state = {
-      //       workerList: [
-      //         {
-      //           firstName: "John",
-      //           lastName: "Smith",
-      //           department: "IT",
-      //           salary: { amount: 3000, currency: "USD" },
-      //         },
-      //         {
-      //           firstName: "Jane",
-      //           lastName: "Doe",
-      //           department: "IT",
-      //           salary: { amount: 3000.5, currency: "USD" },
-      //         },
-      //         {
-      //           firstName: "Bob",
-      //           lastName: "Colman",
-      //           department: "Sales",
-      //           salary: { amount: 9000, currency: "USD" },
-      //         },
-      //         {
-      //           firstName: "Barbara",
-      //           lastName: "O'Connor",
-      //           department: "Sales",
-      //           salary: { amount: 4000, currency: "USD" },
-      //         },
-      //         {
-      //           firstName: "Adam",
-      //           lastName: "Murphy",
-      //           department: "Administration",
-      //           salary: { amount: 2000, currency: "USD" },
-      //         },
-      //       ],
-      //     };
-      //   }
-      //   render() {
-      //     const { workerList } = this.state;
-      //     const salarySum = workerList.reduce(
-      //       (acc, i) => acc + i.salary.amount,
-      //       0
-      //     );
-
-      //     return (
-      //       <div>
-      //         <h2>Workers</h2>
-      //         <table border="1">
-      //           <tbody>
-      //             {workerList.map((worker, index) => (
-      //               <tr key={index}>
-      //                 <td>{index + 1}.</td>
-      //                 <td>{worker.firstName}</td>
-      //                 <td>{worker.lastName}</td>
-      //                 <td>{worker.department}</td>
-      //                 <td>
-      //                   {worker.salary.amount} {worker.salary.currency}
-      //                 </td>
-      //               </tr>
-      //             ))}
-      //           </tbody>
-      //           <tfoot>
-      //             <tr>
-      //               <td colSpan="3"></td>
-      //               <td>Summary</td>
-      //               <td>{salarySum} USD</td>
-      //             </tr>
-      //           </tfoot>
-      //         </table>
-      //       </div>
-      //     );
-      //   }
-      // }
       ReactDOM.render(
         <div
           style={{
