@@ -244,18 +244,6 @@
           (acc, i) => acc + i,
           0
         );
-
-        // Min Max
-        function filterRange(arr, a, b) {
-          // added brackets around the expression for better readability
-          return arr.filter(
-            (item) => a <= item.salary.amount && item.salary.amount <= b
-          );
-        }
-        let arr = [5, 6, 7, 3, 8, 1];
-
-        let filtered = filterRange(arr, 4, 9);
-        console.log(filtered);
         // workersList.forEach((uniqueDepartment) => {
         //   const departmentSum = {
         //     sum: 0,
