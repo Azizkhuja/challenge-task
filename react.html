@@ -245,6 +245,17 @@
           0
         );
 
+        // Min Max
+        function filterRange(arr, a, b) {
+          // added brackets around the expression for better readability
+          return arr.filter(
+            (item) => a <= item.salary.amount && item.salary.amount <= b
+          );
+        }
+        let arr = [5, 6, 7, 3, 8, 1];
+
+        let filtered = filterRange(arr, 4, 9);
+        console.log(filtered);
         // workersList.forEach((uniqueDepartment) => {
         //   const departmentSum = {
         //     sum: 0,
@@ -432,17 +443,20 @@
             <h2>Salary per department</h2>
             <div>
               <p>
-                Total salary of IT: <span className="totalValue">{itOops}</span>
+                Total salary for the department of IT:{" "}
+                <span className="totalValue">{itOops}$</span>
               </p>
               <p>
-                Total salary of Sales:{" "}
-                <span className="totalValue">{oops}</span>
+                Total salary for the department of Sales:{" "}
+                <span className="totalValue">{oops}$</span>
               </p>
               <p>
-                Total salary of Administration:{" "}
-                <span className="totalValue">{adOps}</span>
+                Total salary for the department of Administration:{" "}
+                <span className="totalValue">{adOps}$</span>
               </p>
             </div>
+            <input type="number" placeholder="min" />
+            <input type="number" placeholder="max" />
           </div>
         );
       };
