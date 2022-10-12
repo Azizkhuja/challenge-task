@@ -69,6 +69,7 @@
     <div id="app"></div>
     <script type="text/babel">
       const WorkerList = () => {
+        // Initial state
         const initState = [
           {
             firstName: "John",
@@ -101,6 +102,7 @@
             salary: { amount: 2000, currency: "USD" },
           },
         ];
+
         const [workersList, setWorkersList] = React.useState(initState);
         const [workerName, setWorkerName] = React.useState("");
         const [workerLastName, setWorkerLastName] = React.useState("");
@@ -111,6 +113,7 @@
         const [query, setQuery] = React.useState("");
         const [checked, setChecked] = React.useState(false);
 
+        // Rerender when add new worker list and when the page load
         React.useEffect(() => {
           setSalarySum(
             workersList.reduce(
