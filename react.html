@@ -121,6 +121,7 @@
           );
         }, [workersList]);
 
+        // Add to ToDo list
         const addToList = (e) => {
           e.preventDefault();
           if (
@@ -161,6 +162,7 @@
           setWorkersList(results);
         };
 
+        // Display summary of total value per department
         const itDepartmentArr = [];
         const salesDepartmentArr = [];
         const administrationDepartmentArr = [];
