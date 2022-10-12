@@ -68,65 +68,6 @@
   <body>
     <div id="app"></div>
     <script type="text/babel">
-      // TASK related requrments start
-      class TaskList extends React.Component {
-        constructor() {
-          super();
-          this.state = {
-            taskList: [
-              {
-                title: "Add form to add new worker",
-                completed: false,
-                subtaskList: [
-                  { title: "firstName", completed: false },
-                  { title: "lastName", completed: false },
-                  { title: "department", completed: false },
-                  { title: "salary amount and currency", completed: false },
-                ],
-              },
-              {
-                title: "Add search form",
-                completed: false,
-                subtaskList: [
-                  { title: "person (text)", completed: false },
-                  { title: "department (multiple choice)", completed: false },
-                  { title: "salary (range)", completed: false },
-                ],
-              },
-              {
-                title: "Add summary of salary per department",
-                completed: false,
-              },
-              {
-                title:
-                  "Other improvements (feel free to add other improvements)",
-                completed: false,
-              },
-            ],
-          };
-        }
-        render() {
-          const { taskList } = this.state;
-          return (
-            <ol>
-              {taskList.map((task, tIdx) => (
-                <li key={tIdx}>
-                  {task.title} {task.completed ? "✅" : "❌"}
-                  <ol type="a">
-                    {task.subtaskList &&
-                      task.subtaskList.map((subtask, stIdx) => (
-                        <li key={stIdx}>
-                          {subtask.title} {subtask.completed ? "✅" : "❌"}
-                        </li>
-                      ))}
-                  </ol>
-                </li>
-              ))}
-            </ol>
-          );
-        }
-      }
-      // End of TASK related requrments
       const WorkerList = () => {
         const initState = [
           {
@@ -533,7 +474,7 @@
         >
           <div>
             <h1>TODO</h1>
-            <TaskList />
+
             <h2>Hints</h2>
             <ol>
               <li>
